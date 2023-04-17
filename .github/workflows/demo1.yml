@@ -1,5 +1,11 @@
 name: Events Demo 1
-on: ...
+on: 
+  pull_requests:
+    # Activity Types
+    types: 
+      # It will only trigger when its opened
+      - opened
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
