@@ -6,6 +6,17 @@ on:
       # It will only trigger when its opened
       - opened
   workflow_dispatch:
+  push:
+    # will only triggered by pushing to the following branches
+    branches: 
+      - master # master
+      # reg allowed
+      - 'dev-*' # '*' - single char rather than '/' dev-new frv-this-id-new
+      - 'feat/**' # '**' - single char including '/' feat/new feat/new/button
+      # Ex developer-1 will not trigger
+    paths-ignore: # only if we did not change a file into github workflow's folder
+      - '.github/workflows/*'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
